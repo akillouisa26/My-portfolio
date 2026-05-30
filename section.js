@@ -302,3 +302,17 @@ window.toggleCertificates = function () {
 
 };
 })();
+
+/* Fetch visitor count without showing the badge image */
+fetch("https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visitors&countColor=%238b5e3c")
+  .then(res => res.text())
+  .then(svg => {
+    const match = svg.match(/>(\d+)<\/text>/g);
+    if (match) {
+      const count = match[match.length - 1].replace(/<\/?[^>]+>/g, "");
+      document.getElementById("vb-count").textContent = count;
+    }
+  })
+  .catch(() => {
+    document.getElementById("vb-count").textContent = "—";
+  });
