@@ -15,7 +15,7 @@ function createBubble() {
         x: Math.random() * canvas.width,
         y: canvas.height + Math.random() * 100,
         radius: Math.random() * 6 + 2,
-        speed: Math.random() * 1 + 0.5,
+        speed: Math.random() * 0.7 + 0.3,
         opacity: Math.random() * 0.3 + 0.1
     };
 }
@@ -44,3 +44,22 @@ function animate() {
 }
 
 animate();
+// =========================================
+// ACTIVE NAVBAR LINK
+// =========================================
+
+const navLinks = document.querySelectorAll('#mainNav .nav-link');
+
+navLinks.forEach(link => {
+
+    link.addEventListener('click', function () {
+
+        // remove active from all
+        navLinks.forEach(nav => nav.classList.remove('active'));
+
+        // add active to clicked
+        this.classList.add('active');
+
+    });
+
+});

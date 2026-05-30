@@ -424,3 +424,39 @@ body::after {
 .home {
     padding-top: 80px;
 }
+/* =========================================
+   ACTIVE NAVBAR UNDERLINE
+========================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+#mainNav .nav-link {
+    position: relative;
+    color: #5c3d2a;
+    transition: color 0.25s ease;
+    padding-bottom: 5px;
+}
+
+/* underline */
+#mainNav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background: #8b5e3c;
+    transition: width 0.3s ease;
+}
+
+/* hover underline */
+#mainNav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* active underline */
+#mainNav .nav-link.active::after {
+    width: 100%;
+}

@@ -24,7 +24,7 @@
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#home">Akil Louisa</a>
+        <a class="navbar-brand fw-bold" href="#home">Akil Louisa - Portfolio</a>
         <button class="navbar-toggler" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navMenu"
                 aria-controls="navMenu" aria-expanded="false"
@@ -32,13 +32,41 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
-            <ul class="navbar-nav ms-auto gap-2">
-                <li class="nav-item"><a class="nav-link fw-semibold" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link fw-semibold" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link fw-semibold" href="#projects">Projects</a></li>       
-                <li class="nav-item"><a class="nav-link fw-semibold" href="#achievements">Achievements</a></li> 
-                <li class="nav-item"><a class="nav-link fw-semibold" href="#contact">Contact</a></li>      
-            </ul>
+           <ul class="navbar-nav ms-auto gap-2">
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold active" href="#home">Home</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold" href="#about">About</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold" href="#skills">Skills</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold" href="#education">Education</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold" href="#internship">Internship</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold" href="#projects">Projects</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold" href="#achievements">Achievements</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link fw-semibold" href="#contact">Contact</a>
+    </li>
+
+</ul>
         </div>
     </div>
 </nav>
@@ -168,9 +196,14 @@
         </div>
 
        <!-- Card 2 : Technical Skills -->
+        <div class="row justify-content-center mb-3">
+            <div class="col-auto">
+                <p class="section-label reveal">Skills</p>
+            </div>
+        </div>
 <div class="row justify-content-center mb-4">
     <div class="col-12" style="max-width:960px;">
-        <div class="about-skills-card reveal">
+        <div class="about-skills-card reveal" id="skills">
             <h3 class="about-sub-heading">Technical Skills</h3>
 
             <div class="row g-3 align-items-start position-relative" style="z-index:1;">
@@ -278,6 +311,11 @@
         </div><!-- /.about-skills-card -->
     </div>
 </div>
+       <div class="row justify-content-center mb-3">
+            <div class="col-auto">
+                <p class="section-label reveal">Education & Internship</p>
+            </div>
+        </div>
         <!-- Card 3 : Experience + Education -->
         <div class="row justify-content-center mb-4">
             <div class="col-12" style="max-width:960px;">
@@ -285,7 +323,7 @@
 
                     <!-- Education -->
                     <div class="col-12 col-md-6">
-                        <div class="about-timeline-card reveal h-100">
+                        <div class="about-timeline-card reveal h-100" id="education">
                             <h3 class="about-sub-heading">Education</h3>
                             <ul class="timeline list-unstyled">
                                 <li class="tl-item tl-animate" style="--delay:0.1s">
@@ -311,7 +349,7 @@
 
                     <!-- Experience -->
                     <div class="col-12 col-md-6">
-                        <div class="about-timeline-card reveal h-100">
+                        <div class="about-timeline-card reveal h-100" id="internship">
                             <h3 class="about-sub-heading">Internship</h3>
                             <ul class="timeline list-unstyled">
                                 <li class="tl-item tl-animate" style="--delay:0.1s">
@@ -345,13 +383,13 @@
 <section class="projects" id="projects">
   <div class="container">
 
-    <div class="row justify-content-center mb-4">
+    <div class="row justify-content-center ">
       <div class="col-auto">
         <p class="section-label reveal">Projects</p>
       </div>
     </div>
 
-    <div class="row justify-content-center mb-3">
+    <div class="row justify-content-center">
       <div class="col-12" style="max-width:960px;">
         <h2 class="section-title reveal">What I've Built</h2>
       </div>
@@ -881,10 +919,9 @@ An admin panel is included to manage inventory, update stock, track orders, and 
   <div class="container text-center">
     <p class="footer-text">Designed & Built by <span>Akil Louisa S</span> · 2026</p>
     <p class="footer-sub">Aspiring Full Stack Developer </p>
-   <div class="visitor-badge">
-  visitors 
-  <img src="https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=&countColor=%238b5e3c" />
-</div>
+   <div class="visitor-badge"> 
+    <img src="https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visitors&countColor=%238b5e3c" alt="visitor badge" > 
+   </div>
   </div>
 </footer>
 
