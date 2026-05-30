@@ -304,9 +304,9 @@ window.toggleCertificates = function () {
 fetch("https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visitors&countColor=%238b5e3c")
   .then(res => res.text())
   .then(svg => {
-    const match = svg.match(/>(\d+)<\/text>/g);
+    const match = svg.match(/>\d+</g);
     if (match) {
-      const count = match[match.length - 1].replace(/<\/?[^>]+>/g, "");
+      const count = match[match.length - 1].replace(/[><]/g, "");
       document.getElementById("vb-count").textContent = count;
     }
   })
