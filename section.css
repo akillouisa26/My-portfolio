@@ -1,12 +1,11 @@
-
 .about,
 .skills,
 .education,
 .projects,
 .achievements,
 .contact {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   padding-left: 20px;
   padding-right: 20px;
   position: relative;
@@ -18,7 +17,7 @@
   font-size: clamp(1.6rem, 3vw, 2.2rem);
   font-weight: 700;
   color: #3b2a22;
-  margin-bottom: 0 !important;
+  margin-bottom: 20px !important;
   line-height: 1.1;
 }
 
@@ -29,15 +28,14 @@
   margin-bottom: 0;
 }
 
-/* Reduce Bootstrap margin helpers inside sections */
-/* Reduce Bootstrap margin helpers inside sections */
+/* Uniform spacing between rows inside sections */
 .projects .mb-4,
 .achievements .mb-4,
 .contact .mb-4,
 .about .mb-4,
 .skills .mb-4,
 .education .mb-4 {
-  margin-bottom: 0.8rem !important;
+  margin-bottom: 1.25rem !important;
 }
 
 .projects .mb-3,
@@ -46,15 +44,15 @@
 .about .mb-3,
 .skills .mb-3,
 .education .mb-3 {
-  margin-bottom: 0.5rem !important;
+  margin-bottom: 0.75rem !important;
 }
 
 .projects .g-4,
 .achievements .g-4,
 .contact .g-4,
 .about .g-4 {
-  --bs-gutter-y: 1rem !important;
-  --bs-gutter-x: 1rem !important;
+  --bs-gutter-y: 1.25rem !important;
+  --bs-gutter-x: 1.25rem !important;
 }
 
 section .container {
@@ -166,7 +164,6 @@ section .container {
 /* ===== ACHIEVEMENTS ===== */
 .ach-card { padding: 36px 32px; }
 
-/* Each achievement as its own mini glass card */
 .ach-list {
   list-style: none;
   padding: 0; margin: 0;
@@ -176,6 +173,7 @@ section .container {
 }
 
 .ach-item-card {
+  display: block;
   background: rgba(255,255,255,0.45);
   border: 1px solid rgba(139,94,60,0.14);
   border-radius: 16px;
@@ -188,7 +186,6 @@ section .container {
   animation: achCardIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
 }
 
-/* Left accent bar */
 .ach-item-card::before {
   content: "";
   position: absolute;
@@ -204,35 +201,28 @@ section .container {
   border-color: rgba(139,94,60,0.28);
 }
 
-/* Header: emoji + title + org */
-.ach-item-header {
-  display: flex; align-items: flex-start;
-  gap: 12px; margin-bottom: 7px;
-}
+.ach-item-header { display: none !important; }
 
-.ach-emoji {
-  font-size: 1.4rem; line-height: 1;
-  flex-shrink: 0; margin-top: 1px;
-}
-
-.ach-title {
+.ach-item-card .ach-title {
+  display: block;
   font-size: 0.88rem; font-weight: 700;
-  color: #3b2a22; margin: 0 0 2px; line-height: 1.3;
+  color: #3b2a22; margin: 0 0 4px; line-height: 1.3;
 }
 
-.ach-org {
+.ach-item-card .ach-org {
+  display: block;
   font-size: 0.7rem; font-weight: 700;
   color: #8b5e3c; letter-spacing: 0.06em;
-  text-transform: uppercase; margin: 0;
+  text-transform: uppercase; margin: 0 0 7px;
 }
 
-.ach-desc {
+.ach-item-card .ach-desc {
+  display: block;
   font-size: 0.8rem; color: #7a6a5f;
   line-height: 1.6; margin: 0;
-  padding-left: 36px;
+  padding-left: 0 !important;
 }
 
-/* Stagger delays for card load */
 .ach-item-card:nth-child(1) { animation-delay: 0.05s; }
 .ach-item-card:nth-child(2) { animation-delay: 0.12s; }
 .ach-item-card:nth-child(3) { animation-delay: 0.19s; }
@@ -242,7 +232,6 @@ section .container {
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* View More / Less button */
 .ach-toggle-btn {
   display: flex; align-items: center; gap: 6px;
   margin-top: 16px; padding: 9px 22px;
@@ -270,7 +259,6 @@ section .container {
 
 .ach-toggle-btn.expanded svg { transform: rotate(180deg); }
 
-/* Extra achievement items — slide in on reveal */
 .ach-extra {
   animation: achCardIn 0.4s cubic-bezier(0.22,1,0.36,1) both !important;
 }
@@ -346,6 +334,8 @@ section .container {
   text-transform: uppercase; margin: 0;
 }
 
+.cert-extra { display: none; }
+
 /* ===== CERTIFICATE LIGHTBOX MODAL ===== */
 .cert-modal {
   display: none;
@@ -399,9 +389,7 @@ section .container {
   color: #8b5e3c; margin: 10px 0 0;
   letter-spacing: 0.06em; text-transform: uppercase;
 }
-.cert-extra {
-  display: none;
-}
+
 /* ===== CONTACT ===== */
 .contact-info-card { padding: 28px 20px; }
 
@@ -463,7 +451,7 @@ a.contact-info-val:hover { color: #8b5e3c; }
   font-size: 0.88rem; font-weight: 600; color: #4a9e5c;
 }
 
-/* Social links */
+/* ===== SOCIAL LINKS ===== */
 .social-links {
   display: flex; justify-content: center;
   flex-wrap: wrap; gap: 14px; margin-top: 8px;
@@ -491,7 +479,8 @@ a.contact-info-val:hover { color: #8b5e3c; }
 
 /* ===== FOOTER ===== */
 .site-footer {
-  padding: 32px 20px; text-align: center;
+  padding: 32px 20px 0;
+  text-align: center;
   position: relative; z-index: 1;
   border-top: 1px solid rgba(139,94,60,0.1);
 }
@@ -500,89 +489,18 @@ a.contact-info-val:hover { color: #8b5e3c; }
 .footer-text span { font-weight: 700; color: #8b5e3c; }
 .footer-sub { font-size: 0.78rem; color: #a0887a; margin: 0; }
 
-/* ===== NAVBAR ACTIVE LINK ===== */
-#mainNav .nav-link.active-nav {
-  color: #8b5e3c !important;
-  position: relative;
-}
-#mainNav .nav-link.active-nav::after {
-  content: "";
-  position: absolute;
-  bottom: -2px; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #8b5e3c, #c49060);
-  border-radius: 2px;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .contact-form-card { padding: 28px 20px; }
-  .ach-card          { padding: 28px 20px; }
-  .about,
-  .projects,
-  .achievements,
-  .contact {
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-}
-
-/* ================================================
-   FIX: Achievement card — no wrapper div needed
-   Title, org, desc stack vertically inside li
-================================================ */
-
-.ach-item-card {
-  display: block ;
-}
-
-.ach-item-card .ach-title {
-  display: block;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #3b2a22;
-  margin: 0 0 4px;
-  line-height: 1.3;
-}
-
-.ach-item-card .ach-org {
-  display: block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #8b5e3c;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin: 0 0 7px;
-}
-
-.ach-item-card .ach-desc {
-  display: block;
-  font-size: 0.8rem;
-  color: #7a6a5f;
-  line-height: 1.6;
-  margin: 0;
-  padding-left: 0 !important;
-}
-
-/* Remove old header flex styles */
-.ach-item-header { display: none !important; }
-/* ================================================
-   FOOTER LAYOUT
-================================================ */
-/* SUBTITLE + VISITOR SAME LINE */
 .footer-sub-row {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 12px;
-
   flex-wrap: wrap;
 }
 
 .visitor-badge-wrapper {
   display: flex;
   justify-content: flex-end;
-  padding: 0 24px 20px;
+  padding: 16px 24px 24px;
 }
 
 .visitor-badge {
@@ -621,21 +539,20 @@ a.contact-info-val:hover { color: #8b5e3c; }
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .footer-sub-row {
-    justify-content: center;
-  }
-
-  .visitor-badge-wrapper {
-    justify-content: center;
-    padding: 0 0 16px;
-  }
-
-  .visitor-badge {
-    padding: 8px 14px;
-    font-size: 12px;
-  }
+/* ===== NAVBAR ACTIVE LINK ===== */
+#mainNav .nav-link.active-nav {
+  color: #8b5e3c !important;
+  position: relative;
 }
+#mainNav .nav-link.active-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5e3c, #c49060);
+  border-radius: 2px;
+}
+
 /* ===== RESET BUTTON ===== */
 .btn-reset-form {
   display: inline-flex;
@@ -671,4 +588,36 @@ a.contact-info-val:hover { color: #8b5e3c; }
 
 .btn-reset-form:active {
   transform: scale(0.97);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .about,
+  .projects,
+  .achievements,
+  .contact {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .contact-form-card { padding: 28px 20px; }
+  .ach-card          { padding: 28px 20px; }
+
+  .footer-sub-row    { justify-content: center; }
+
+  .visitor-badge-wrapper {
+    justify-content: center;
+    padding: 12px 0 20px;
+  }
+
+  .visitor-badge {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 576px) {
+  .col-mern-label  { order: 1; width: 100% !important; flex: 0 0 100% !important; max-width: 100% !important; }
+  .col-mern-skills { order: 2; width: 100% !important; flex: 0 0 100% !important; max-width: 100% !important; }
+  .col-lang-label  { order: 3; width: 100% !important; flex: 0 0 100% !important; max-width: 100% !important; }
+  .col-lang-skills { order: 4; width: 100% !important; flex: 0 0 100% !important; max-width: 100% !important; }
 }
