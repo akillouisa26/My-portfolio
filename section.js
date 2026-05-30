@@ -301,9 +301,6 @@ window.toggleCertificates = function () {
   btn.classList.toggle("expanded");
 
 };
-})();
-
-/* Fetch visitor count without showing the badge image */
 fetch("https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visitors&countColor=%238b5e3c")
   .then(res => res.text())
   .then(svg => {
@@ -316,3 +313,4 @@ fetch("https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visito
   .catch(() => {
     document.getElementById("vb-count").textContent = "—";
   });
+})();
