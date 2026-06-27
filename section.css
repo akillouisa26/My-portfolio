@@ -334,7 +334,15 @@ section .container {
   text-transform: uppercase; margin: 0;
 }
 
-.cert-extra { display: none; }
+/* Only first 4 certificate cards show by default,
+   regardless of how many are added or in what order */
+.ach-card .row.g-3 > div:nth-child(n+5) {
+  display: none;
+}
+
+.ach-card .row.g-3.show-all > div:nth-child(n+5) {
+  display: block;
+}
 
 /* ===== CERTIFICATE LIGHTBOX MODAL ===== */
 .cert-modal {

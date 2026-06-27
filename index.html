@@ -608,7 +608,49 @@ An admin panel is included to manage inventory, update stock, track orders, and 
           <h3 class="about-sub-heading">Certifications</h3>
 
           <div class="row g-3">
-            
+
+            <div class="col-12 col-sm-6">
+              <div class="cert-card" onclick="openCert('Cloud Technologies – Infosys Springboard')">
+                <div class="cert-img-wrap">
+                  <img src="Images\Cloud_Tech.jpg" alt="Cloud Technologies – Infosys Springboard" class="cert-img"
+                       onerror="this.parentElement.classList.add('cert-no-img')" />
+                  <div class="cert-overlay"><span class="cert-view-btn">👁 View</span></div>
+                </div>
+                <div class="cert-info">
+                  <h6 class="cert-title">Cloud Technologies </h6>
+                  <p class="cert-issuer">Infosys Springboard· 2026</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-6">
+              <div class="cert-card" onclick="openCert('ChatGPT for Data Science and Machine Learning – Udemy')">
+                <div class="cert-img-wrap">
+                  <img src="Images\ChatGPT.jpg" alt="ChatGPT for Data Science and Machine Learning – Udemy" class="cert-img"
+                       onerror="this.parentElement.classList.add('cert-no-img')" />
+                  <div class="cert-overlay"><span class="cert-view-btn">👁 View</span></div>
+                </div>
+                <div class="cert-info">
+                  <h6 class="cert-title">ChatGPT for Data Science and Machine Learning  </h6>
+                  <p class="cert-issuer">Udemy· 2026</p>
+                </div>
+              </div>
+            </div>
+
+             <div class="col-12 col-sm-6">
+              <div class="cert-card" onclick="openCert('Adobe Experience Cloud – Suite – Infosys Springboard')">
+                <div class="cert-img-wrap">
+                  <img src="Images\Adobe.jpg" alt="Adobe Experience Cloud – Suite – Infosys Springboard" class="cert-img"
+                       onerror="this.parentElement.classList.add('cert-no-img')" />
+                  <div class="cert-overlay"><span class="cert-view-btn">👁 View</span></div>
+                </div>
+                <div class="cert-info">
+                  <h6 class="cert-title">Adobe Experience Cloud – Suite </h6>
+                  <p class="cert-issuer">Infosys Springboard · 2026</p>
+                </div>
+              </div>
+            </div>
+
             <div class="col-12 col-sm-6">
               <div class="cert-card" onclick="openCert('Pitch Fest 2026 — Idea Presenter')">
                 <div class="cert-img-wrap">
@@ -622,6 +664,8 @@ An admin panel is included to manage inventory, update stock, track orders, and 
                 </div>
               </div>
             </div>
+
+            <!-- Everything below this point is hidden by default via CSS nth-child(n+5) -->
 
             <div class="col-12 col-sm-6">
               <div class="cert-card" onclick="openCert('Next-Gen AI & Emerging Technologies for Sustainable Development - Research Paper Publish')">
@@ -665,7 +709,7 @@ An admin panel is included to manage inventory, update stock, track orders, and 
               </div>
             </div>
 
-            <div class="col-12 col-sm-6 cert-extra">
+            <div class="col-12 col-sm-6">
               <div class="cert-card" onclick="openCert('Group Discussion certificate')">
                 <div class="cert-img-wrap">
                   <img src="Images\group.jpg" alt="Group Discussion certificate" class="cert-img"
@@ -678,8 +722,8 @@ An admin panel is included to manage inventory, update stock, track orders, and 
                 </div>
               </div>
             </div>
-               
-             <div class="col-12 col-sm-6 cert-extra">
+
+            <div class="col-12 col-sm-6">
               <div class="cert-card" onclick="openCert('College Management Prize')">
                 <div class="cert-img-wrap">
                   <img src="Images\management.jpeg" alt="College Management Prize" class="cert-img"
@@ -693,7 +737,7 @@ An admin panel is included to manage inventory, update stock, track orders, and 
               </div>
             </div>
 
-            <div class="col-12 col-sm-6 cert-extra">
+            <div class="col-12 col-sm-6">
               <div class="cert-card" onclick="openCert('Interdepartmental Contest')">
                 <div class="cert-img-wrap">
                   <img src="Images\interdepartment.jpeg" alt="Interdepartmental Contest" class="cert-img"
@@ -706,27 +750,26 @@ An admin panel is included to manage inventory, update stock, track orders, and 
                 </div>
               </div>
             </div>
-   
+
           </div>
-           <!-- View More / View Less button -->
-<button class="ach-toggle-btn" id="certToggleBtn" onclick="toggleCertificates()">
-  <span id="certBtnText">View More</span>
 
-  <svg id="certBtnIcon"
-       xmlns="http://www.w3.org/2000/svg"
-       width="14"
-       height="14"
-       viewBox="0 0 24 24"
-       fill="none"
-       stroke="currentColor"
-       stroke-width="2.5"
-       stroke-linecap="round"
-       stroke-linejoin="round">
+          <!-- View More / View Less button -->
+          <button class="ach-toggle-btn" id="certToggleBtn" onclick="toggleCertificates()">
+            <span id="certBtnText">View More</span>
 
-    <polyline points="6 9 12 15 18 9"/>
-
-  </svg>
-</button>
+            <svg id="certBtnIcon"
+                 xmlns="http://www.w3.org/2000/svg"
+                 width="14"
+                 height="14"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2.5"
+                 stroke-linecap="round"
+                 stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -742,6 +785,7 @@ An admin panel is included to manage inventory, update stock, track orders, and 
     <p class="cert-modal-caption" id="certModalCaption"></p>
   </div>
 </div>
+
 <!-- ===== CONTACT SECTION ===== -->
 <section class="contact" id="contact">
   <div class="container">

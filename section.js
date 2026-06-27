@@ -171,18 +171,18 @@
 
   window.openCert = function (title) {
 
-  const modal = document.getElementById('certModal');
-  const img = document.getElementById('certModalImg');
-  const caption = document.getElementById('certModalCaption');
+    const modal = document.getElementById('certModal');
+    const img = document.getElementById('certModalImg');
+    const caption = document.getElementById('certModalCaption');
 
-  const clickedImg = event.currentTarget.querySelector("img");
+    const clickedImg = event.currentTarget.querySelector("img");
 
-  img.src = clickedImg.src;
-  caption.textContent = title;
+    img.src = clickedImg.src;
+    caption.textContent = title;
 
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-};
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
 
   /* CLOSE MODAL */
 
@@ -281,36 +281,52 @@
 
   /* ================================================
      CERTIFICATES VIEW MORE / LESS
+     (Position-based: always shows first 4 cards,
+     hides the rest, regardless of how many you add)
   ================================================= */
-window.toggleCertificates = function () {
 
-  const extra = document.querySelectorAll(".cert-extra");
-  const btnText = document.getElementById("certBtnText");
-  const btn = document.getElementById("certToggleBtn");
+  window.toggleCertificates = function () {
 
-  if (!extra.length) return;
+    const row = document.querySelector('.ach-card .row.g-3');
+    const btnText = document.getElementById('certBtnText');
+    const btn = document.getElementById('certToggleBtn');
 
-  const isHidden =
-    extra[0].style.display === "none" || extra[0].style.display === "";
+    if (!row) return;
 
-  extra.forEach(el => {
-    el.style.display = isHidden ? "block" : "none";
-  });
+    row.classList.toggle('show-all');
 
-  btnText.textContent = isHidden ? "View Less" : "View More";
-  btn.classList.toggle("expanded");
+    const expanded = row.classList.contains('show-all');
 
-};
-fetch("https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visitors&countColor=%238b5e3c")
-  .then(res => res.text())
-  .then(svg => {
-    const match = svg.match(/>\d+</g);
-    if (match) {
-      const count = match[match.length - 1].replace(/[><]/g, "");
-      document.getElementById("vb-count").textContent = count;
+    btnText.textContent = expanded ? 'View Less' : 'View More';
+    btn.classList.toggle('expanded', expanded);
+
+    if (!expanded) {
+      document
+        .getElementById('achievements')
+        .scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
     }
-  })
-  .catch(() => {
-    document.getElementById("vb-count").textContent = "—";
-  });
+
+  };
+
+
+  /* ================================================
+     VISITOR BADGE
+  ================================================= */
+
+  fetch("https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visitors&countColor=%238b5e3c")
+    .then(res => res.text())
+    .then(svg => {
+      const match = svg.match(/>\d+</g);
+      if (match) {
+        const count = match[match.length - 1].replace(/[><]/g, "");
+        document.getElementById("vb-count").textContent = count;
+      }
+    })
+    .catch(() => {
+      document.getElementById("vb-count").textContent = "—";
+    });
+
 })();
