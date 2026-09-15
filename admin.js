@@ -654,7 +654,7 @@
     showToast("GitHub settings saved! Auto-push enabled.");
   };
 
-  // Edit CV Link Modal (Method 1 Primary)
+  // Edit CV Link Modal
   window.openEditCVModal = function () {
     const currentCV = portfolioData?.cvUrl || "resume.pdf";
     const container = document.getElementById("adminModalContainer");
@@ -672,12 +672,6 @@
             <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Type your resume PDF filename (e.g. <code>resume2.pdf</code>) or URL. Clicking Save will automatically push the update live to GitHub!</small>
           </div>
 
-          <div class="admin-form-group" style="margin-top:14px;">
-            <label class="admin-form-label">OR Upload New PDF File (Optional)</label>
-            <input type="file" id="cvFileInput" class="admin-form-input" accept=".pdf" />
-            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Optional: Choose a new PDF file from your device to auto-upload to GitHub.</small>
-          </div>
-
           <div class="admin-form-footer">
             <button class="admin-btn" onclick="closeAdminModal()">Cancel</button>
             <button class="admin-btn admin-btn-primary" id="saveCvBtn" onclick="saveCVLink()">Save CV Link</button>
@@ -687,44 +681,12 @@
     `;
   };
 
-  window.saveCVLink = async function () {
-    const fileInput = document.getElementById("cvFileInput");
+  window.saveCVLink = function () {
     const urlInput = document.getElementById("cvUrlInput");
-    const saveBtn = document.getElementById("saveCvBtn");
-
-    const file = fileInput?.files?.[0];
-    let cvPath = urlInput?.value?.trim();
-
-    if (file) {
-      if (saveBtn) {
-        saveBtn.disabled = true;
-        saveBtn.textContent = "Uploading PDF to GitHub...";
-      }
-      try {
-        const base64 = await readFileAsBase64(file);
-        const filename = file.name;
-        cvPath = filename;
-
-        const pushRes = await autoPushFileToGitHub(filename, base64, `Upload ${filename} resume via Admin Panel`);
-        if (pushRes.success) {
-          showToast(`Uploaded ${filename} & pushed to GitHub!`);
-        } else if (pushRes.reason === "no_token") {
-          showToast("PDF set locally. Set GitHub token in settings to auto-push!", true);
-        } else {
-          showToast("GitHub upload error: " + pushRes.reason, true);
-        }
-      } catch (err) {
-        console.error("File upload error:", err);
-        showToast("Failed to read PDF file.", true);
-      }
-    }
+    const cvPath = urlInput?.value?.trim();
 
     if (!cvPath) {
       showToast("Please enter a CV filename or web link!", true);
-      if (saveBtn) {
-        saveBtn.disabled = false;
-        saveBtn.textContent = "Save CV Link";
-      }
       return;
     }
 
