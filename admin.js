@@ -669,7 +669,6 @@
           <div class="admin-form-group">
             <label class="admin-form-label">Resume PDF Filename or Web Link</label>
             <input type="text" id="cvUrlInput" class="admin-form-input" value="${escapeHTML(currentCV)}" placeholder="e.g. resume2.pdf or https://..." required />
-            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Type your resume PDF filename (e.g. <code>resume2.pdf</code>) or URL. Clicking Save will automatically push the update live to GitHub!</small>
           </div>
 
           <div class="admin-form-footer">
