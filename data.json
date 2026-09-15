@@ -70,9 +70,9 @@
       {
         "id": "s9",
         "name": "Java",
-        "badge": "Slight",
         "badgeType": "slight",
-        "width": "20%"
+        "badge": "Slight",
+        "width": "70%"
       },
       {
         "id": "s10",
