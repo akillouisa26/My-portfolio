@@ -309,6 +309,63 @@
     }
   }
 
+  function readFileAsBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result;
+        const base64 = result.substr(result.indexOf(",") + 1);
+        resolve(base64);
+      };
+      reader.onerror = (err) => reject(err);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function autoPushFileToGitHub(filePath, base64Content, commitMessage = "Upload file via Admin Panel") {
+    const token = localStorage.getItem(GH_TOKEN_KEY);
+    const repo = localStorage.getItem(GH_REPO_KEY) || "akillouisa26/My-portfolio";
+
+    if (!token) return { success: false, reason: "no_token" };
+
+    try {
+      const apiUrl = `https://api.github.com/repos/${repo}/contents/${filePath}`;
+
+      let sha = "";
+      const getRes = await fetch(apiUrl, {
+        headers: { Authorization: `token ${token}` },
+      });
+      if (getRes.ok) {
+        const fileInfo = await getRes.json();
+        sha = fileInfo.sha;
+      }
+
+      const putRes = await fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          Authorization: `token ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: commitMessage,
+          content: base64Content,
+          sha: sha || undefined,
+        }),
+      });
+
+      if (putRes.ok) {
+        return { success: true };
+      } else {
+        const errJson = await putRes.json();
+        console.error("Failed to push file to GitHub:", errJson);
+        return { success: false, reason: errJson.message || "api_error" };
+      }
+    } catch (err) {
+      console.error("Auto-push file error:", err);
+      return { success: false, reason: err.message };
+    }
+  }
+
   function injectAdminUI() {
     if (document.getElementById("adminFloatBtn")) return;
 
@@ -597,7 +654,7 @@
     showToast("GitHub settings saved! Auto-push enabled.");
   };
 
-  // Edit CV Link Modal
+  // Edit CV Link & PDF Upload Modal
   window.openEditCVModal = function () {
     const currentCV = portfolioData?.cvUrl || "resume.pdf";
     const container = document.getElementById("adminModalContainer");
@@ -605,37 +662,77 @@
       <div class="admin-modal-overlay active">
         <div class="admin-modal-box">
           <div class="admin-modal-header">
-            <h4 class="admin-modal-title"><i class="ti ti-file-text"></i> Edit CV / Resume Link</h4>
+            <h4 class="admin-modal-title"><i class="ti ti-file-text"></i> Edit CV / Upload Resume</h4>
             <button class="admin-modal-close" onclick="closeAdminModal()">✕</button>
           </div>
 
           <div class="admin-form-group">
-            <label class="admin-form-label">CV File Path or Web URL</label>
-            <input type="text" id="cvUrlInput" class="admin-form-input" value="${escapeHTML(currentCV)}" placeholder="resume.pdf or Images/My_Resume.pdf or https://..." required />
-            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Enter a local PDF path (e.g. <code>resume.pdf</code>) or a web link to your resume.</small>
+            <label class="admin-form-label">Upload New Resume File (PDF)</label>
+            <input type="file" id="cvFileInput" class="admin-form-input" accept=".pdf" />
+            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Select a PDF from your device to automatically upload and push directly to your GitHub repository live!</small>
+          </div>
+
+          <div class="admin-form-group" style="margin-top:14px;">
+            <label class="admin-form-label">OR Current CV File Path / Web URL</label>
+            <input type="text" id="cvUrlInput" class="admin-form-input" value="${escapeHTML(currentCV)}" placeholder="resume.pdf or https://..." />
+            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Or enter an existing PDF filename or link.</small>
           </div>
 
           <div class="admin-form-footer">
             <button class="admin-btn" onclick="closeAdminModal()">Cancel</button>
-            <button class="admin-btn admin-btn-primary" onclick="saveCVLink()">Save CV Link</button>
+            <button class="admin-btn admin-btn-primary" id="saveCvBtn" onclick="saveCVLink()">Save & Auto-Push CV</button>
           </div>
         </div>
       </div>
     `;
   };
 
-  window.saveCVLink = function () {
-    const input = document.getElementById("cvUrlInput");
-    if (!input || !input.value.trim()) {
-      showToast("CV path cannot be empty!", true);
+  window.saveCVLink = async function () {
+    const fileInput = document.getElementById("cvFileInput");
+    const urlInput = document.getElementById("cvUrlInput");
+    const saveBtn = document.getElementById("saveCvBtn");
+
+    const file = fileInput?.files?.[0];
+    let cvPath = urlInput?.value?.trim();
+
+    if (file) {
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Uploading PDF to GitHub...";
+      }
+      try {
+        const base64 = await readFileAsBase64(file);
+        const filename = file.name;
+        cvPath = filename;
+
+        const pushRes = await autoPushFileToGitHub(filename, base64, `Upload ${filename} resume via Admin Panel`);
+        if (pushRes.success) {
+          showToast(`Uploaded ${filename} & pushed to GitHub!`);
+        } else if (pushRes.reason === "no_token") {
+          showToast("PDF set locally. Set GitHub token in settings to auto-push!", true);
+        } else {
+          showToast("GitHub upload error: " + pushRes.reason, true);
+        }
+      } catch (err) {
+        console.error("File upload error:", err);
+        showToast("Failed to read PDF file.", true);
+      }
+    }
+
+    if (!cvPath) {
+      showToast("Please choose a PDF file or enter a CV path!", true);
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save & Auto-Push CV";
+      }
       return;
     }
 
-    portfolioData.cvUrl = input.value.trim();
+    portfolioData.cvUrl = cvPath;
     saveDataLocally();
     renderCV();
     closeAdminModal();
-    showToast("CV link updated successfully!");
+    showToast("CV link updated & saved!");
   };
 
   // Render CV Link Across All Buttons on Page
@@ -1013,7 +1110,12 @@
           <input type="text" id="f_issuer" class="admin-form-input" value="${item ? escapeHTML(item.issuer) : ""}" placeholder="Infosys Springboard · 2026" />
         </div>
         <div class="admin-form-group">
-          <label class="admin-form-label">Image Path / URL</label>
+          <label class="admin-form-label">Upload Certificate Image File</label>
+          <input type="file" id="f_image_file" class="admin-form-input" accept="image/*" />
+          <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Select an image file to auto-upload directly to GitHub Images folder.</small>
+        </div>
+        <div class="admin-form-group" style="margin-top:10px;">
+          <label class="admin-form-label">OR Image Path / URL</label>
           <input type="text" id="f_image" class="admin-form-input" value="${item ? escapeHTML(item.image) : "Images/"}" />
         </div>
       `;
@@ -1039,7 +1141,7 @@
     `;
   }
 
-  window.saveItemForm = function (e, type, id, isEdit) {
+  window.saveItemForm = async function (e, type, id, isEdit) {
     e.preventDefault();
 
     if (type === "mern_skill" || type === "lang_skill") {
@@ -1104,11 +1206,29 @@
         portfolioData.achievements.unshift(newItem);
       }
     } else if (type === "certification") {
+      const imgFileInput = document.getElementById("f_image_file");
+      const imgFile = imgFileInput?.files?.[0];
+      let imgPath = document.getElementById("f_image").value;
+
+      if (imgFile) {
+        try {
+          const base64 = await readFileAsBase64(imgFile);
+          const targetPath = "Images/" + imgFile.name;
+          imgPath = targetPath;
+          const pushRes = await autoPushFileToGitHub(targetPath, base64, `Upload ${imgFile.name} image via Admin Panel`);
+          if (pushRes.success) {
+            showToast(`Uploaded ${imgFile.name} image to GitHub!`);
+          }
+        } catch (err) {
+          console.error("Image upload error:", err);
+        }
+      }
+
       const newItem = {
         id,
         title: document.getElementById("f_title").value,
         issuer: document.getElementById("f_issuer").value,
-        image: document.getElementById("f_image").value,
+        image: imgPath,
       };
       if (isEdit) {
         const idx = portfolioData.certifications.findIndex((x) => x.id === id);
