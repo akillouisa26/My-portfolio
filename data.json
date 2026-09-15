@@ -77,9 +77,9 @@
       {
         "id": "s10",
         "name": "PHP",
-        "badge": "Slight",
         "badgeType": "slight",
-        "width": "22%"
+        "badge": "Slight",
+        "width": "72%"
       }
     ]
   },
