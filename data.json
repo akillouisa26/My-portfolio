@@ -199,6 +199,12 @@
   ],
   "certifications": [
     {
+      "id": "new_1789468684151",
+      "title": "Al Fundamentals: Foundations for Understanding Al",
+      "issuer": "IBM SkillsBuild . 2026",
+      "image": "Images/IBM1"
+    },
+    {
       "id": "c1",
       "title": "Cloud Technologies",
       "issuer": "Infosys Springboard · 2026",
