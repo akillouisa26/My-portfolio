@@ -2,18 +2,78 @@
   "cvUrl": "resume.pdf",
   "skills": {
     "mern": [
-      { "id": "s1", "name": "HTML & CSS", "badge": "Familiar", "badgeType": "known", "width": "85%" },
-      { "id": "s2", "name": "JavaScript", "badge": "Familiar", "badgeType": "known", "width": "75%" },
-      { "id": "s3", "name": "React", "badge": "Learning", "badgeType": "learning", "width": "22%" },
-      { "id": "s4", "name": "Node.js & Express", "badge": "Learning", "badgeType": "learning", "width": "18%" },
-      { "id": "s5", "name": "MongoDB", "badge": "Learning", "badgeType": "learning", "width": "18%" }
+      {
+        "id": "s1",
+        "name": "HTML & CSS",
+        "badge": "Familiar",
+        "badgeType": "known",
+        "width": "85%"
+      },
+      {
+        "id": "s2",
+        "name": "JavaScript",
+        "badge": "Familiar",
+        "badgeType": "known",
+        "width": "75%"
+      },
+      {
+        "id": "s3",
+        "name": "React",
+        "badge": "Learning",
+        "badgeType": "learning",
+        "width": "22%"
+      },
+      {
+        "id": "s4",
+        "name": "Node.js & Express",
+        "badge": "Learning",
+        "badgeType": "learning",
+        "width": "18%"
+      },
+      {
+        "id": "s5",
+        "name": "MongoDB",
+        "badge": "Learning",
+        "badgeType": "learning",
+        "width": "18%"
+      }
     ],
     "languages": [
-      { "id": "s6", "name": "Python", "badge": "Familiar", "badgeType": "known", "width": "62%" },
-      { "id": "s7", "name": "C++", "badge": "Familiar", "badgeType": "known", "width": "58%" },
-      { "id": "s8", "name": "SQL", "badge": "Familiar", "badgeType": "known", "width": "52%" },
-      { "id": "s9", "name": "Java", "badge": "Slight", "badgeType": "slight", "width": "20%" },
-      { "id": "s10", "name": "PHP", "badge": "Slight", "badgeType": "slight", "width": "22%" }
+      {
+        "id": "s6",
+        "name": "Python",
+        "badge": "Familiar",
+        "badgeType": "known",
+        "width": "62%"
+      },
+      {
+        "id": "s7",
+        "name": "C++",
+        "badge": "Familiar",
+        "badgeType": "known",
+        "width": "58%"
+      },
+      {
+        "id": "s8",
+        "name": "SQL",
+        "badge": "Familiar",
+        "badgeType": "known",
+        "width": "52%"
+      },
+      {
+        "id": "s9",
+        "name": "Java",
+        "badge": "Slight",
+        "badgeType": "slight",
+        "width": "20%"
+      },
+      {
+        "id": "s10",
+        "name": "PHP",
+        "badge": "Slight",
+        "badgeType": "slight",
+        "width": "22%"
+      }
     ]
   },
   "education": [
@@ -46,7 +106,12 @@
       "id": "p1",
       "title": "Age Detection and Comparison System",
       "desc": "A real-time age detection and age calculator application built using Python, OpenCV, and Deep Learning. The system captures live video, detects faces, predicts age ranges, and compares them with the user’s actual age for accuracy analysis.",
-      "tags": ["Python", "OpenCV", "Tkinter", "Deep Learning"],
+      "tags": [
+        "Python",
+        "OpenCV",
+        "Tkinter",
+        "Deep Learning"
+      ],
       "github": "https://github.com/akillouisa26/Age-Detection-and-Comparison-System",
       "live": ""
     },
@@ -54,17 +119,14 @@
       "id": "p2",
       "title": "Online Book Store Management System",
       "desc": "A web-based book buying and selling platform developed using PHP, MySQL, JavaScript, and CSS. Users can browse books, search by category or title, and place orders. An admin panel is included to manage inventory, update stock, track orders, and maintain customer records efficiently.",
-      "tags": ["PHP", "CSS", "JavaScript", "SQL"],
+      "tags": [
+        "PHP",
+        "CSS",
+        "JavaScript",
+        "SQL"
+      ],
       "github": "#",
       "live": ""
-    },
-    {
-      "id": "p3",
-      "title": "Portfolio Website",
-      "desc": "A personal portfolio designed and built from scratch using HTML, CSS, and JavaScript. Features a warm glassmorphism UI with animated bubble background, smooth scroll reveals, project tilt effects, certificate lightbox, and a live visitor counter — fully responsive across all devices.",
-      "tags": ["HTML", "CSS", "JavaScript"],
-      "github": "https://github.com/akillouisa26/My-portfolio",
-      "live": "#"
     }
   ],
   "achievements": [
