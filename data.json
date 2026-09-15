@@ -40,9 +40,9 @@
       {
         "id": "s5",
         "name": "MongoDB",
-        "badge": "Learning",
         "badgeType": "learning",
-        "width": "18%"
+        "badge": "Learning",
+        "width": "75%"
       }
     ],
     "languages": [
