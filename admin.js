@@ -654,7 +654,7 @@
     showToast("GitHub settings saved! Auto-push enabled.");
   };
 
-  // Edit CV Link & PDF Upload Modal
+  // Edit CV Link Modal (Method 1 Primary)
   window.openEditCVModal = function () {
     const currentCV = portfolioData?.cvUrl || "resume.pdf";
     const container = document.getElementById("adminModalContainer");
@@ -662,25 +662,25 @@
       <div class="admin-modal-overlay active">
         <div class="admin-modal-box">
           <div class="admin-modal-header">
-            <h4 class="admin-modal-title"><i class="ti ti-file-text"></i> Edit CV / Upload Resume</h4>
+            <h4 class="admin-modal-title"><i class="ti ti-file-text"></i> Edit CV / Resume Link</h4>
             <button class="admin-modal-close" onclick="closeAdminModal()">✕</button>
           </div>
 
           <div class="admin-form-group">
-            <label class="admin-form-label">Upload New Resume File (PDF)</label>
-            <input type="file" id="cvFileInput" class="admin-form-input" accept=".pdf" />
-            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Select a PDF from your device to automatically upload and push directly to your GitHub repository live!</small>
+            <label class="admin-form-label">Resume PDF Filename or Web Link</label>
+            <input type="text" id="cvUrlInput" class="admin-form-input" value="${escapeHTML(currentCV)}" placeholder="e.g. resume2.pdf or https://..." required />
+            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Type your resume PDF filename (e.g. <code>resume2.pdf</code>) or URL. Clicking Save will automatically push the update live to GitHub!</small>
           </div>
 
           <div class="admin-form-group" style="margin-top:14px;">
-            <label class="admin-form-label">OR Current CV File Path / Web URL</label>
-            <input type="text" id="cvUrlInput" class="admin-form-input" value="${escapeHTML(currentCV)}" placeholder="resume.pdf or https://..." />
-            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Or enter an existing PDF filename or link.</small>
+            <label class="admin-form-label">OR Upload New PDF File (Optional)</label>
+            <input type="file" id="cvFileInput" class="admin-form-input" accept=".pdf" />
+            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Optional: Choose a new PDF file from your device to auto-upload to GitHub.</small>
           </div>
 
           <div class="admin-form-footer">
             <button class="admin-btn" onclick="closeAdminModal()">Cancel</button>
-            <button class="admin-btn admin-btn-primary" id="saveCvBtn" onclick="saveCVLink()">Save & Auto-Push CV</button>
+            <button class="admin-btn admin-btn-primary" id="saveCvBtn" onclick="saveCVLink()">Save CV Link</button>
           </div>
         </div>
       </div>
@@ -720,10 +720,10 @@
     }
 
     if (!cvPath) {
-      showToast("Please choose a PDF file or enter a CV path!", true);
+      showToast("Please enter a CV filename or web link!", true);
       if (saveBtn) {
         saveBtn.disabled = false;
-        saveBtn.textContent = "Save & Auto-Push CV";
+        saveBtn.textContent = "Save CV Link";
       }
       return;
     }
@@ -732,7 +732,7 @@
     saveDataLocally();
     renderCV();
     closeAdminModal();
-    showToast("CV link updated & saved!");
+    showToast("CV link updated & auto-pushed to GitHub!");
   };
 
   // Render CV Link Across All Buttons on Page
