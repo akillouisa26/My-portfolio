@@ -26,9 +26,9 @@
       {
         "id": "s3",
         "name": "React",
-        "badge": "Learning",
         "badgeType": "learning",
-        "width": "22%"
+        "badge": "Learning",
+        "width": "75%"
       },
       {
         "id": "s4",
