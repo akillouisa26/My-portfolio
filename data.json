@@ -110,6 +110,19 @@
   ],
   "projects": [
     {
+      "id": "new_1789469485032",
+      "title": "Personal Expense Tracker",
+      "desc": "A web-based financial management platform developed using JavaScript, Firebase Firestore, HTML5, and CSS3. Users can track category budgets, log debit and credit transactions, maintain an isolated savings vault, and export transaction statements to PDF reports. The application features an offline-first architecture with browser Local Storage and automatic real-time cloud synchronization, complete with zero-floor budget safeguards to prevent negative balances.",
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Firebase Firestore"
+      ],
+      "github": "https://github.com/akillouisa26/Expense-Tracker",
+      "live": "https://akillouisa26.github.io/Expense-Tracker/"
+    },
+    {
       "id": "p1",
       "title": "Age Detection and Comparison System",
       "desc": "A real-time age detection and age calculator application built using Python, OpenCV, and Deep Learning. The system captures live video, detects faces, predicts age ranges, and compares them with the user’s actual age for accuracy analysis.",
