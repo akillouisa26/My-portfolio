@@ -1,0 +1,412 @@
+/* ============================================================
+   ADMIN PANEL STYLES - Matched to Portfolio Theme (#fbf7f0 & #8b5e3c)
+   ============================================================ */
+
+/* Floating Admin Trigger Button (Bottom Left) */
+.admin-float-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1050;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8b5e3c, #a47148);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 24px rgba(139, 94, 60, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.admin-float-btn:hover {
+  transform: scale(1.08) rotate(15deg);
+  box-shadow: 0 12px 30px rgba(139, 94, 60, 0.5);
+  color: #ffffff;
+}
+
+/* Admin Top Bar (Light Warm Glass Theme) */
+.admin-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1060;
+  background: rgba(251, 247, 240, 0.92);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(139, 94, 60, 0.2);
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #4b3832;
+  box-shadow: 0 4px 20px rgba(139, 94, 60, 0.12);
+  font-family: 'Segoe UI', sans-serif;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.admin-top-bar .admin-status-badge {
+  background: rgba(139, 94, 60, 0.08);
+  color: #8b5e3c;
+  border: 1px solid rgba(139, 94, 60, 0.25);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-btn {
+  background: rgba(139, 94, 60, 0.08);
+  color: #8b5e3c;
+  border: 1px solid rgba(139, 94, 60, 0.22);
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.25s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.admin-btn:hover {
+  background: #8b5e3c;
+  color: #ffffff;
+  border-color: #8b5e3c;
+  box-shadow: 0 4px 14px rgba(139, 94, 60, 0.25);
+}
+
+.admin-btn-primary {
+  background: linear-gradient(135deg, #8b5e3c, #a47148);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.admin-btn-primary:hover {
+  background: linear-gradient(135deg, #a47148, #8b5e3c);
+  box-shadow: 0 6px 18px rgba(139, 94, 60, 0.35);
+}
+
+.admin-btn-danger {
+  background: rgba(185, 28, 28, 0.08);
+  border-color: rgba(185, 28, 28, 0.22);
+  color: #b91c1c;
+}
+
+.admin-btn-danger:hover {
+  background: #b91c1c;
+  color: #ffffff;
+  border-color: #b91c1c;
+  box-shadow: 0 4px 14px rgba(185, 28, 28, 0.25);
+}
+
+/* Adjust layout when admin bar is open */
+body.admin-active {
+  padding-top: 54px;
+}
+
+body.admin-active .navbar {
+  top: 54px;
+}
+
+/* Section Header Add Button */
+.section-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+  background: rgba(139, 94, 60, 0.08);
+  color: #8b5e3c;
+  border: 1px solid rgba(139, 94, 60, 0.3);
+  padding: 5px 14px;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  vertical-align: middle;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.section-add-btn:hover {
+  background: #8b5e3c;
+  color: #ffffff;
+  border-color: #8b5e3c;
+  box-shadow: 0 4px 14px rgba(139, 94, 60, 0.25);
+}
+
+/* Ensure ALL item elements have relative positioning so edit/delete buttons stay inside them */
+.cert-card, .proj-card, .skill-item, .tl-item, .ach-item-card {
+  position: relative !important;
+}
+
+/* Edit / Delete Buttons on Individual Cards ONLY */
+.item-admin-controls {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 25;
+  gap: 6px;
+}
+
+body.admin-mode-on .item-admin-controls {
+  display: flex !important;
+}
+
+.item-admin-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(139, 94, 60, 0.3);
+  color: #4b3832;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(139, 94, 60, 0.2);
+}
+
+.item-admin-btn.edit-btn:hover {
+  background: #8b5e3c;
+  color: #ffffff;
+  border-color: #8b5e3c;
+}
+
+.item-admin-btn.delete-btn:hover {
+  background: #b91c1c;
+  color: #ffffff;
+  border-color: #b91c1c;
+}
+
+/* Specific styling for certificate cards edit buttons so they sit neatly on the top right of each cert card */
+.cert-card .item-admin-controls {
+  top: 10px;
+  right: 10px;
+}
+
+/* Modal Overlay & Box (Warm Glass Theme) */
+.admin-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(75, 56, 50, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.admin-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.admin-modal-box {
+  background: rgba(251, 247, 240, 0.96);
+  border: 1px solid rgba(139, 94, 60, 0.25);
+  border-radius: 24px;
+  width: 90%;
+  max-width: 520px;
+  padding: 32px;
+  box-shadow:
+    0 20px 60px rgba(139, 94, 60, 0.22),
+    0 2px 0 rgba(255, 255, 255, 0.9) inset;
+  color: #4b3832;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.25s ease;
+}
+
+.admin-modal-overlay.active .admin-modal-box {
+  transform: translateY(0);
+}
+
+.admin-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(139, 94, 60, 0.15);
+}
+
+.admin-modal-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #8b5e3c;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-modal-close {
+  background: transparent;
+  border: none;
+  color: #8b5e3c;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.admin-modal-close:hover {
+  background: rgba(139, 94, 60, 0.1);
+  color: #4b3832;
+}
+
+.admin-form-group {
+  margin-bottom: 18px;
+}
+
+.admin-form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #4b3832;
+  margin-bottom: 6px;
+}
+
+.admin-form-input, .admin-form-select, .admin-form-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(139, 94, 60, 0.25);
+  border-radius: 14px;
+  padding: 10px 16px;
+  color: #4b3832;
+  font-size: 0.9rem;
+  font-family: 'Segoe UI', sans-serif;
+  transition: all 0.2s ease;
+}
+
+.admin-form-input:focus, .admin-form-select:focus, .admin-form-textarea:focus {
+  outline: none;
+  border-color: #8b5e3c;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(139, 94, 60, 0.15);
+}
+
+.admin-form-textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+/* Hide Browser Default Password Reveal / Clear Buttons (Edge, IE, Chrome) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="text"]::-ms-reveal,
+input[type="text"]::-ms-clear {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Password Input Group with Eye Toggle */
+.password-input-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-wrap .admin-form-input {
+  padding-right: 46px !important;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #8b5e3c;
+  font-size: 1.15rem;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #4b3832;
+}
+
+.admin-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+/* Toast Notification (Theme Matched) */
+.admin-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 24px;
+  z-index: 2050;
+  background: rgba(251, 247, 240, 0.95);
+  border: 1px solid #8b5e3c;
+  color: #4b3832;
+  padding: 12px 20px;
+  border-radius: 30px;
+  box-shadow: 0 10px 30px rgba(139, 94, 60, 0.25);
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.admin-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.admin-toast i {
+  color: #8b5e3c;
+  font-size: 1.1rem;
+}

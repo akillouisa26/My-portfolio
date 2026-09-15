@@ -1,0 +1,200 @@
+{
+  "cvUrl": "resume.pdf",
+  "skills": {
+    "mern": [
+      { "id": "s1", "name": "HTML & CSS", "badge": "Familiar", "badgeType": "known", "width": "85%" },
+      { "id": "s2", "name": "JavaScript", "badge": "Familiar", "badgeType": "known", "width": "75%" },
+      { "id": "s3", "name": "React", "badge": "Learning", "badgeType": "learning", "width": "22%" },
+      { "id": "s4", "name": "Node.js & Express", "badge": "Learning", "badgeType": "learning", "width": "18%" },
+      { "id": "s5", "name": "MongoDB", "badge": "Learning", "badgeType": "learning", "width": "18%" }
+    ],
+    "languages": [
+      { "id": "s6", "name": "Python", "badge": "Familiar", "badgeType": "known", "width": "62%" },
+      { "id": "s7", "name": "C++", "badge": "Familiar", "badgeType": "known", "width": "58%" },
+      { "id": "s8", "name": "SQL", "badge": "Familiar", "badgeType": "known", "width": "52%" },
+      { "id": "s9", "name": "Java", "badge": "Slight", "badgeType": "slight", "width": "20%" },
+      { "id": "s10", "name": "PHP", "badge": "Slight", "badgeType": "slight", "width": "22%" }
+    ]
+  },
+  "education": [
+    {
+      "id": "edu1",
+      "role": "Master of Computer Application",
+      "place": "St. Joseph's College(Autonomous), Tiruchirappalli.",
+      "date": "2025 - Present",
+      "desc": "CGPA: 9.3"
+    },
+    {
+      "id": "edu2",
+      "role": "B. Sc. Computer Science",
+      "place": "Fatima College(Autonomous), Madurai.",
+      "date": "2022 - 2025",
+      "desc": "CGPA: 8.6"
+    }
+  ],
+  "internships": [
+    {
+      "id": "int1",
+      "role": "Full Stack Developer Intern",
+      "place": "FrontierWox Tech Private Limited",
+      "date": "2026 — Present",
+      "desc": "Currently working on developing responsive and user-friendly web applications using HTML, CSS, and JavaScript, while actively learning and building full-stack applications with React.js, Node.js, Express, and MongoDB. Collaborating with the team on UI development, debugging, and enhancing user experience while gaining hands-on experience in the MERN stack."
+    }
+  ],
+  "projects": [
+    {
+      "id": "p1",
+      "title": "Age Detection and Comparison System",
+      "desc": "A real-time age detection and age calculator application built using Python, OpenCV, and Deep Learning. The system captures live video, detects faces, predicts age ranges, and compares them with the user’s actual age for accuracy analysis.",
+      "tags": ["Python", "OpenCV", "Tkinter", "Deep Learning"],
+      "github": "https://github.com/akillouisa26/Age-Detection-and-Comparison-System",
+      "live": ""
+    },
+    {
+      "id": "p2",
+      "title": "Online Book Store Management System",
+      "desc": "A web-based book buying and selling platform developed using PHP, MySQL, JavaScript, and CSS. Users can browse books, search by category or title, and place orders. An admin panel is included to manage inventory, update stock, track orders, and maintain customer records efficiently.",
+      "tags": ["PHP", "CSS", "JavaScript", "SQL"],
+      "github": "#",
+      "live": ""
+    },
+    {
+      "id": "p3",
+      "title": "Portfolio Website",
+      "desc": "A personal portfolio designed and built from scratch using HTML, CSS, and JavaScript. Features a warm glassmorphism UI with animated bubble background, smooth scroll reveals, project tilt effects, certificate lightbox, and a live visitor counter — fully responsive across all devices.",
+      "tags": ["HTML", "CSS", "JavaScript"],
+      "github": "https://github.com/akillouisa26/My-portfolio",
+      "live": "#"
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ach1",
+      "title": "First Rank — MCA",
+      "org": "St. Joseph's College · 2026",
+      "desc": "Secured First Rank and awarded a Silver Medal along with certificates, books, and cash prizes for outstanding academic performance."
+    },
+    {
+      "id": "ach2",
+      "title": "Canva Design Competition",
+      "org": "Interdepartmental Competition",
+      "desc": "Won first place for designing a poster on \"AI Takes Over the Future of the Global Economy.\""
+    },
+    {
+      "id": "ach3",
+      "title": "Science Exhibition",
+      "org": "Interdepartmental Competition",
+      "desc": "Secured second place for presenting a working model on Land Pollution, explaining its impact and practical preventive measures to the audience, and was awarded a certificate and cash prize."
+    },
+    {
+      "id": "ach4",
+      "title": "International Conference Paper Presenter",
+      "org": "Next-Gen AI & Emerging Technologies for Sustainable Development",
+      "desc": "Presented and published a research paper on AI-driven facial skin analysis and personalized cosmetic recommendation with integrated analytics, and received a certificate of recognition."
+    },
+    {
+      "id": "ach5",
+      "title": "Pitch Fest 2026 — Idea Presenter",
+      "org": "Innovation Event",
+      "desc": "Presented \"Fall Detection & Emergency Alert System\" designed to support elderly people with real-time safety and emergency response features, and received a participation certificate."
+    },
+    {
+      "id": "ach6",
+      "title": "SSLC — School Rank Holder",
+      "org": "Academic Achievement · 2020",
+      "desc": "Achieved Third Rank at the school level, reflecting strong academic consistency and dedication."
+    },
+    {
+      "id": "ach7",
+      "title": "March Past — Team Lead",
+      "org": "Leadership Role",
+      "desc": "Led the team as In-charge and successfully secured first place through coordination and teamwork."
+    },
+    {
+      "id": "ach8",
+      "title": "Event Organizer — DISHA 2025",
+      "org": "Department Event · 2025",
+      "desc": "Played a key role in organizing a department-level event, ensuring smooth execution and coordination."
+    },
+    {
+      "id": "ach9",
+      "title": "Volunteer Activities",
+      "org": "Department Contribution",
+      "desc": "Actively participated in departmental volunteering and supported various academic and event activities."
+    },
+    {
+      "id": "ach10",
+      "title": "Community Awareness Initiative",
+      "org": "Social Development",
+      "desc": "Conducted awareness programs in rural areas to promote social responsibility and community well-being."
+    },
+    {
+      "id": "ach11",
+      "title": "Culturals & Technical Competitions",
+      "org": "Certificates & Prizes",
+      "desc": "Actively participated and won prizes in events such as dance, face painting, bridal makeup, and technical rounds, earning multiple certificates and recognitions."
+    }
+  ],
+  "certifications": [
+    {
+      "id": "c1",
+      "title": "Cloud Technologies",
+      "issuer": "Infosys Springboard · 2026",
+      "image": "Images/Cloud_Tech.jpg"
+    },
+    {
+      "id": "c2",
+      "title": "ChatGPT for Data Science and Machine Learning",
+      "issuer": "Udemy · 2026",
+      "image": "Images/ChatGPT.jpg"
+    },
+    {
+      "id": "c3",
+      "title": "Adobe Experience Cloud – Suite",
+      "issuer": "Infosys Springboard · 2026",
+      "image": "Images/Adobe.jpg"
+    },
+    {
+      "id": "c4",
+      "title": "Pitch Fest 2026",
+      "issuer": "Idea Presentation · 2026",
+      "image": "Images/pitch.jpeg"
+    },
+    {
+      "id": "c5",
+      "title": "Next-Gen AI & Emerging Technologies",
+      "issuer": "Research Paper Published · 2026",
+      "image": "Images/paper.jpg"
+    },
+    {
+      "id": "c6",
+      "title": "Data Base Management System",
+      "issuer": "NPTEL · 2025",
+      "image": "Images/database.jpg"
+    },
+    {
+      "id": "c7",
+      "title": "TCS iON Career Edge - Young Professional",
+      "issuer": "Tata Consultancy Services · 2024",
+      "image": "Images/young.jpg"
+    },
+    {
+      "id": "c8",
+      "title": "Course on Group Discussion",
+      "issuer": "Tata Consultancy Services · 2024",
+      "image": "Images/group.jpg"
+    },
+    {
+      "id": "c9",
+      "title": "College Management Prize",
+      "issuer": "St.Joseph's College · 2026",
+      "image": "Images/management.jpeg"
+    },
+    {
+      "id": "c10",
+      "title": "Interdepartmental Contest",
+      "issuer": "St.Joseph's College · 2026",
+      "image": "Images/interdepartment.jpeg"
+    }
+  ]
+}

@@ -316,17 +316,23 @@
      VISITOR BADGE
   ================================================= */
 
-  fetch("https://api.visitorbadge.io/api/visitors?path=akil-portfolio&label=Visitors&countColor=%238b5e3c")
-    .then(res => res.text())
-    .then(svg => {
-      const match = svg.match(/>\d+</g);
-      if (match) {
-        const count = match[match.length - 1].replace(/[><]/g, "");
-        document.getElementById("vb-count").textContent = count;
-      }
-    })
-    .catch(() => {
-      document.getElementById("vb-count").textContent = "—";
-    });
+  const countEl = document.getElementById("vb-count");
+  if (countEl) {
+    let currentVal = parseInt(localStorage.getItem("portfolio_visitor_count") || "128", 10) + 1;
+    localStorage.setItem("portfolio_visitor_count", currentVal.toString());
+    countEl.textContent = currentVal;
+
+    fetch("https://api.counterapi.dev/v1/akillouisa_portfolio/visits/up")
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.count) {
+          countEl.textContent = data.count;
+          localStorage.setItem("portfolio_visitor_count", data.count.toString());
+        }
+      })
+      .catch(() => {
+        // Keeps local increment count if offline/blocked
+      });
+  }
 
 })();
