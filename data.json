@@ -33,9 +33,9 @@
       {
         "id": "s4",
         "name": "Node.js & Express",
-        "badge": "Learning",
         "badgeType": "learning",
-        "width": "18%"
+        "badge": "Learning",
+        "width": "75%"
       },
       {
         "id": "s5",
