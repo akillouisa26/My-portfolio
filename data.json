@@ -3,6 +3,13 @@
   "skills": {
     "mern": [
       {
+        "id": "new_1789469087152",
+        "name": "Cloud Firebase ",
+        "badgeType": "learning",
+        "badge": "Learning",
+        "width": "75%"
+      },
+      {
         "id": "s1",
         "name": "HTML & CSS",
         "badge": "Familiar",
