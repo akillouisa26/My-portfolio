@@ -129,7 +129,7 @@
     {
       "id": "new_1789469485032",
       "title": "Personal Expense Tracker",
-      "desc": "A web-based financial management platform developed using JavaScript, Firebase Firestore, HTML5, and CSS3. Users can track category budgets, log debit and credit transactions, maintain an isolated savings vault, and export transaction statements to PDF reports. The application features an offline-first architecture with browser Local Storage and automatic real-time cloud synchronization, complete with zero-floor budget safeguards to prevent negative balances.",
+      "desc": "A web-based financial management platform developed using JavaScript, Firebase Firestore, HTML5, and CSS3. Users can track category budgets, log debit and credit transactions, maintain an isolated savings vault, and export transaction statements to PDF reports. The application features an offline-first architecture with browser Local Storage and automatic real-time cloud synchronization.",
       "tags": [
         "HTML",
         "CSS",
