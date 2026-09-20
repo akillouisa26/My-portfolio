@@ -110,6 +110,23 @@
   ],
   "projects": [
     {
+      "id": "new_1789921724835",
+      "title": "MCA Placement Brochure Generator & Management System",
+      "desc": "A web application that collects student academic profiles and dynamically generates standardized, print-ready placement brochures. It provides admins with customizable form settings, real-time submission management, and automated single-page brochure formatting.",
+      "tags": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Firebase Authentication",
+        "Cloud Firestore",
+        "CSS3",
+        "HTML5 Canvas",
+        "Node.js."
+      ],
+      "github": "https://github.com/akillouisa26/mcabrochure",
+      "live": "https://mcabrochure.vercel.app/"
+    },
+    {
       "id": "new_1789469485032",
       "title": "Personal Expense Tracker",
       "desc": "A web-based financial management platform developed using JavaScript, Firebase Firestore, HTML5, and CSS3. Users can track category budgets, log debit and credit transactions, maintain an isolated savings vault, and export transaction statements to PDF reports. The application features an offline-first architecture with browser Local Storage and automatic real-time cloud synchronization, complete with zero-floor budget safeguards to prevent negative balances.",
