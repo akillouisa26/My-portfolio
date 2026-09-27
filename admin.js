@@ -654,7 +654,7 @@
     showToast("GitHub settings saved! Auto-push enabled.");
   };
 
-  // Edit CV Link Modal
+  // Edit CV Link Modal (File Selection & Auto-Push)
   window.openEditCVModal = function () {
     const currentCV = portfolioData?.cvUrl || "resume.pdf";
     const container = document.getElementById("adminModalContainer");
@@ -662,30 +662,68 @@
       <div class="admin-modal-overlay active">
         <div class="admin-modal-box">
           <div class="admin-modal-header">
-            <h4 class="admin-modal-title"><i class="ti ti-file-text"></i> Edit CV / Resume Link</h4>
+            <h4 class="admin-modal-title"><i class="ti ti-file-text"></i> Change / Upload Resume</h4>
             <button class="admin-modal-close" onclick="closeAdminModal()">✕</button>
           </div>
 
           <div class="admin-form-group">
-            <label class="admin-form-label">Resume PDF Filename or Web Link</label>
-            <input type="text" id="cvUrlInput" class="admin-form-input" value="${escapeHTML(currentCV)}" placeholder="e.g. resume2.pdf or https://..." required />
+            <label class="admin-form-label">Select New Resume PDF File</label>
+            <input type="file" id="cvFileInput" class="admin-form-input" accept=".pdf" />
+            <small style="color:#7a6a5f; font-size:0.75rem; margin-top:4px; display:block;">Select a PDF from your computer. It will automatically upload the file directly to your GitHub repository live!</small>
+          </div>
+
+          <div class="admin-form-group" style="margin-top:14px;">
+            <label class="admin-form-label">OR Current Resume Path / Web Link</label>
+            <input type="text" id="cvUrlInput" class="admin-form-input" value="${escapeHTML(currentCV)}" placeholder="e.g. Akil_Louisa_S.pdf or https://..." />
           </div>
 
           <div class="admin-form-footer">
             <button class="admin-btn" onclick="closeAdminModal()">Cancel</button>
-            <button class="admin-btn admin-btn-primary" id="saveCvBtn" onclick="saveCVLink()">Save CV Link</button>
+            <button class="admin-btn admin-btn-primary" id="saveCvBtn" onclick="saveCVLink()">Save & Push Resume</button>
           </div>
         </div>
       </div>
     `;
   };
 
-  window.saveCVLink = function () {
+  window.saveCVLink = async function () {
+    const fileInput = document.getElementById("cvFileInput");
     const urlInput = document.getElementById("cvUrlInput");
-    const cvPath = urlInput?.value?.trim();
+    const saveBtn = document.getElementById("saveCvBtn");
+
+    const file = fileInput?.files?.[0];
+    let cvPath = urlInput?.value?.trim();
+
+    if (file) {
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.textContent = "Uploading PDF to GitHub...";
+      }
+      try {
+        const base64 = await readFileAsBase64(file);
+        const filename = file.name;
+        cvPath = filename;
+
+        const pushRes = await autoPushFileToGitHub(filename, base64, `Upload ${filename} resume via Admin Panel`);
+        if (pushRes.success) {
+          showToast(`Uploaded ${filename} & pushed to GitHub!`);
+        } else if (pushRes.reason === "no_token") {
+          showToast("PDF set locally. Set GitHub token in settings to auto-push!", true);
+        } else {
+          showToast("GitHub upload error: " + pushRes.reason, true);
+        }
+      } catch (err) {
+        console.error("File upload error:", err);
+        showToast("Failed to read PDF file.", true);
+      }
+    }
 
     if (!cvPath) {
-      showToast("Please enter a CV filename or web link!", true);
+      showToast("Please select a PDF file or enter a resume link!", true);
+      if (saveBtn) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = "Save & Push Resume";
+      }
       return;
     }
 
@@ -693,7 +731,7 @@
     saveDataLocally();
     renderCV();
     closeAdminModal();
-    showToast("CV link updated & auto-pushed to GitHub!");
+    showToast("Resume updated & auto-pushed to GitHub!");
   };
 
   // Render CV Link Across All Buttons on Page
